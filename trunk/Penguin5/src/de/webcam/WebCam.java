@@ -1,3 +1,19 @@
+/*This file is part of Penguin5.
+    
+  Penguin5 is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+   Penguin5 is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with Penguin5.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package de.webcam;
 
 import java.awt.Image;
@@ -10,6 +26,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Main class
+ * @author johannes
+ *
+ */
 public class WebCam implements Runnable, ComponentListener{
 
 	private static String url = "http://www.tuebingen.de/camera/markt.jpg";
@@ -20,7 +41,14 @@ public class WebCam implements Runnable, ComponentListener{
 	private Image imgScaled;
 	private Image imgUnscaled;
 
-	
+	/**
+	 * Takes arguments:
+	 * refreshing interval in milli seconds
+	 * URL as string
+	 * 
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) 
 	throws Exception{
 		
@@ -40,6 +68,10 @@ public class WebCam implements Runnable, ComponentListener{
 
 	}
 	
+	/**
+	 * Constructor
+	 * Creates GUI and starts thread for the viewer
+	 */
 	public WebCam(){
 		
 		try {
@@ -62,6 +94,9 @@ public class WebCam implements Runnable, ComponentListener{
 		}
 	}
 
+	/**
+	 * Refreshes the current image periodically from the given url
+	 */
 	public void run() {
 		
 		boolean ende = false;
@@ -71,16 +106,21 @@ public class WebCam implements Runnable, ComponentListener{
 			try {
 							
 				frame.setTitle("Marktplatz T\u00FCbingen");
+				
 				URL u= new URL(url);
+				
 				imgUnscaled = ImageIO.read( u );			
-				//Image image = Toolkit.getDefaultToolkit().getImage("/Users/johannes/Pictures/IMAG0013.jpg");
 				
 				System.out.println("geladen");
 				
 				this.scaleImage();			
+				
 				ImageIcon i=new ImageIcon(imgScaled);
+				
 				lblBild.setIcon(i);
+				
 				frame.repaint();
+				
 				frame.setTitle("Marktplatz T\u00FCbingen");
 				
 				Thread.sleep(sleep);
@@ -107,6 +147,9 @@ public class WebCam implements Runnable, ComponentListener{
 		
 	}
 
+	/**
+	 * reacts on resize event from the main frame and forces the image to scale
+	 */
 	public void componentResized(ComponentEvent arg0) {
 		
 		if(imgScaled!=null &&frame!=null){
@@ -126,6 +169,9 @@ public class WebCam implements Runnable, ComponentListener{
 		
 	}
 	
+	/**
+	 * scales the current image, that it fits into the frame/label
+	 */
 	private void scaleImage(){
 		
 		imgScaled = imgUnscaled.getScaledInstance(lblBild.getWidth(), lblBild.getHeight(), Image.SCALE_SMOOTH);
