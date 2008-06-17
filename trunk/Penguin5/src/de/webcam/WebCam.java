@@ -28,7 +28,6 @@ import javax.swing.JLabel;
 
 /**
  * Main class
- * @author johannes
  *
  */
 public class WebCam implements Runnable, ComponentListener{
