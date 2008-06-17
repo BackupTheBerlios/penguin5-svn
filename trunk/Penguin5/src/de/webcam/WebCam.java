@@ -76,14 +76,20 @@ public class WebCam implements Runnable, ComponentListener{
 		try {
 			
 			frame= new JFrame();
-			frame.setTitle("Marktplatz T\u00FCbingen");
-			lblBild=new JLabel("L\u00E4d...");
+			
+			frame.setTitle("Penguin5");
+			
+			lblBild=new JLabel("Loads...");
+			
 			frame.add(lblBild);
+			
 			frame.setVisible(true);
+			
 			frame.setSize(640,500);
+			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 			new Thread(this).start();
-			frame.setTitle("Marktplatz T\u00FCbingen");
 
 			frame.addComponentListener(this);
 			
@@ -103,14 +109,12 @@ public class WebCam implements Runnable, ComponentListener{
 		while(!ende){
 		
 			try {
-							
-				frame.setTitle("Marktplatz T\u00FCbingen");
 				
 				URL u= new URL(url);
 				
 				imgUnscaled = ImageIO.read( u );			
 				
-				System.out.println("geladen");
+				System.out.println("loaded...");
 				
 				this.scaleImage();			
 				
@@ -120,8 +124,6 @@ public class WebCam implements Runnable, ComponentListener{
 				
 				frame.repaint();
 				
-				frame.setTitle("Marktplatz T\u00FCbingen");
-				
 				Thread.sleep(sleep);
 				
 			} catch (Exception e) {
@@ -130,7 +132,7 @@ public class WebCam implements Runnable, ComponentListener{
 				
 				ende = true;
 				
-				lblBild.setText("Fehler");
+				lblBild.setText("Exception: " + e.getMessage());
 				
 			}
 		}
@@ -154,8 +156,11 @@ public class WebCam implements Runnable, ComponentListener{
 		if(imgScaled!=null &&frame!=null){
 			
 			this.scaleImage();
+			
 			ImageIcon i=new ImageIcon(imgScaled);
+			
 			lblBild.setIcon(i);
+			
 			frame.repaint();
 			
 		}
