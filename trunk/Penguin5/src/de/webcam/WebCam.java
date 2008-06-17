@@ -90,7 +90,7 @@ public class WebCam implements Runnable, ComponentListener{
 			
 			frame.setVisible(true);
 			
-			frame.setSize(150,100);
+			frame.setSize(200,130);
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
