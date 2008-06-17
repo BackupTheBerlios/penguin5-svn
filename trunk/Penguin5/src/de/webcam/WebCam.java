@@ -43,6 +43,8 @@ public class WebCam implements Runnable, ComponentListener{
 	private Image imgScaled;
 	private Image imgUnscaled;
 
+	private boolean isLoaded = false;
+	
 	/**
 	 * Takes arguments:
 	 * refreshing interval in milli seconds
@@ -88,7 +90,7 @@ public class WebCam implements Runnable, ComponentListener{
 			
 			frame.setVisible(true);
 			
-			frame.setSize(640,500);
+			frame.setSize(150,100);
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
@@ -121,11 +123,19 @@ public class WebCam implements Runnable, ComponentListener{
 				
 				this.scaleImage();			
 				
-				ImageIcon i=new ImageIcon(imgScaled);
+				ImageIcon i = new ImageIcon(imgScaled);
 				
 				lblBild.setIcon(i);
 				
 				frame.repaint();
+				
+				if(!isLoaded){
+					
+					frame.setSize(imgUnscaled.getWidth(null), imgUnscaled.getHeight(null));
+					
+				}
+				
+				isLoaded = true;
 				
 				Thread.sleep(sleep);
 				
