@@ -32,8 +32,8 @@ import javax.swing.JLabel;
  */
 public class WebCam implements Runnable, ComponentListener{
 
-	private static final String versionNumber = "1.0";
-	private static final String title = "Penguin5";
+	private static final String VERSION_NUMBER = "1.0";
+	private static final String TITLE = "Penguin5";
 	
 	private static String url = "http://www.tuebingen.de/camera/markt.jpg";
 	private static long sleep = 60000;
@@ -82,7 +82,7 @@ public class WebCam implements Runnable, ComponentListener{
 			
 			frame= new JFrame();
 			
-			frame.setTitle(title + " :: "+ versionNumber);
+			frame.setTitle(TITLE + " :: "+ VERSION_NUMBER);
 			
 			lblBild=new JLabel("Loads...");
 			
