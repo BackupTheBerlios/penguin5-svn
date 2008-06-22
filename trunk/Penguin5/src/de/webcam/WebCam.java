@@ -84,7 +84,7 @@ public class WebCam implements Runnable, ComponentListener{
 			
 			frame.setTitle(TITLE + " :: "+ VERSION_NUMBER);
 			
-			lblBild=new JLabel("Loads...");
+			lblBild=new JLabel("Loading...");
 			
 			frame.add(lblBild);
 			
