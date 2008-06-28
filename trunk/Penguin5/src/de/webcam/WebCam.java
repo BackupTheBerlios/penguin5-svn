@@ -32,7 +32,7 @@ import javax.swing.JLabel;
  */
 public class WebCam implements Runnable, ComponentListener{
 
-	private static final String VERSION_NUMBER = "1.0";
+	private static final String VERSION_NUMBER = "1.0.1";
 	private static final String TITLE = "Penguin5";
 	
 	private static String url = "http://www.tuebingen.de/camera/markt.jpg";
@@ -119,7 +119,7 @@ public class WebCam implements Runnable, ComponentListener{
 				
 				imgUnscaled = ImageIO.read( u );			
 				
-				System.out.println("loaded...");
+				System.out.println("image loaded...");
 				
 				this.scaleImage();			
 				
